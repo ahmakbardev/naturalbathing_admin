@@ -9,7 +9,7 @@
                     <!-- navbar nav -->
                     <ul class="navbar-nav flex-col" id="sideNavbar">
                         <li class="nav-item">
-                            <a class="nav-link  active " href="./index.html">
+                            <a class="nav-link  active " href="{{ route('admin.dashboard') }}">
                                 <i data-feather="home" class="w-4 h-4 mr-2"></i>
                                 Dashboard
                             </a>
@@ -28,7 +28,7 @@
                             <div id="navPages" class="collapse " data-bs-parent="#sideNavbar">
                                 <ul class="nav flex-col">
                                     <li class="nav-item">
-                                        <a class="nav-link " href="{{ route('content.index') }}">Main section</a>
+                                        <a class="nav-link " href="{{ route('content.hero-section.create') }}">Main section</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link " href="./settings.html">Maps</a>
