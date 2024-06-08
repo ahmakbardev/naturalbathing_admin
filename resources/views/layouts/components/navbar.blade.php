@@ -15,9 +15,9 @@
                             </a>
                         </li>
                         <!-- nav item -->
-                        <li class="nav-item">
-                            <div class="navbar-heading">Layouts & Pages</div>
-                        </li>
+                            <li class="nav-item">
+                                <div class="navbar-heading">Manajemen Konten</div>
+                            </li>
                         <!-- nav item -->
                         <li class="nav-item">
                             <a class="nav-link  collapsed " href="#!" data-bs-toggle="collapse"
@@ -28,7 +28,7 @@
                             <div id="navPages" class="collapse " data-bs-parent="#sideNavbar">
                                 <ul class="nav flex-col">
                                     <li class="nav-item">
-                                        <a class="nav-link " href="./profile.html">Main section</a>
+                                        <a class="nav-link " href="{{ route('content.index') }}">Main section</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link " href="./settings.html">Maps</a>

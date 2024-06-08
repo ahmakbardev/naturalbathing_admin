@@ -1,14 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="bg-indigo-600 px-8 pt-10 lg:pt-14 pb-16 flex justify-between items-center mb-3">
-        <!-- title -->
-        @include('layouts.components.breadcrumb')
-        <a href="#"
-            class="btn bg-white text-gray-800 border-gray-600 hover:bg-gray-100 hover:text-gray-800 hover:border-gray-200 active:bg-gray-100 active:text-gray-800 active:border-gray-200 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-            Buat Paket Baru
-        </a>
-    </div>
+
     <div class="-mt-12 mx-6 mb-6 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 xl:grid-cols-4">
         <!-- card -->
         <div class="card shadow">

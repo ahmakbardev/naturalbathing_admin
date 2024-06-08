@@ -38,7 +38,7 @@
                 <!-- start navbar -->
                 @include('layouts.components.header')
                 <!-- end of navbar -->
-
+                @include('layouts.components.breadcrumb')
                 @yield('content')
 
                 @include('layouts.components.footer')
