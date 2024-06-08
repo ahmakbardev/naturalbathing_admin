@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\HeroSectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,8 +36,6 @@ Route::middleware('auth:admin')->group(function () {
     })->name('admin.dashboard');
     // });
     Route::prefix('content')->name('content.')->group(function () {
-        Route::get('/main-section', function () {
-            return view('content.main-section');
-        })->name('index');
+        Route::resource('hero-section', HeroSectionController::class)->except(['index']);
     });
 });
