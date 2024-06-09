@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\HeroSectionController;
+use App\Http\Controllers\MapSectionController;
+use App\Http\Controllers\PaketBiasaController;
+use App\Http\Controllers\PaketSpesialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +39,14 @@ Route::middleware('auth:admin')->group(function () {
     })->name('admin.dashboard');
     // });
     Route::prefix('content')->name('content.')->group(function () {
+        Route::get('/hero-section/check', [HeroSectionController::class, 'checkAndRedirect'])->name('hero-section.check');
         Route::resource('hero-section', HeroSectionController::class)->except(['index']);
+
+        Route::get('/map-section/check', [MapSectionController::class, 'checkAndRedirect'])->name('map-section.check');
+        Route::resource('map-section', MapSectionController::class)->except('index');
+
+        Route::resource('paket-biasa', PaketBiasaController::class);
+
+        Route::resource('paket-spesial', PaketSpesialController::class);
     });
 });

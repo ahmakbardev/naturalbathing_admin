@@ -19,6 +19,7 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('assets/styles/css/app.css') }}">
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
     {{-- <link rel="stylesheet" href="{{ asset('assets/libs/apexcharts.css')}}" /> --}}
 
@@ -40,10 +41,11 @@
                 <!-- end of navbar -->
                 @include('layouts.components.breadcrumb')
                 @yield('content')
-
+                @include('layouts.components.toast')
                 @include('layouts.components.footer')
 
             </div>
+
         </div>
         <!-- end of project -->
     </main>
@@ -57,6 +59,10 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Theme JS -->
     {{-- <script src="{{ asset('assets/theme.min.js') }}"></script> --}}
+
+    @yield('scripts')
+
+    {{-- ckeditor --}}
 
 </body>
 

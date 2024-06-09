@@ -14,9 +14,23 @@ class HeroSectionController extends Controller
     //     return view('hero.index', compact('heroSections'));
     // }
 
+    public function checkAndRedirect()
+    {
+        // Mengecek apakah ada data di tabel hero_section
+        $heroSection = DB::table('hero_section')->first();
+
+        if ($heroSection) {
+            // Jika data ada, arahkan ke halaman edit
+            return redirect()->route('content.hero-section.edit', $heroSection->id);
+        } else {
+            // Jika data tidak ada, arahkan ke halaman create
+            return redirect()->route('content.hero-section.create');
+        }
+    }
+
     public function create()
     {
-        return view('content.main-section');
+        return view('content.hero-section.create');
     }
 
     public function store(Request $request)
@@ -54,7 +68,7 @@ class HeroSectionController extends Controller
 
     public function edit(HeroSection $heroSection)
     {
-        return view('hero.edit', compact('heroSection'));
+        return view('content.hero-section.edit', compact('heroSection'));
     }
 
     public function update(Request $request, HeroSection $heroSection)
