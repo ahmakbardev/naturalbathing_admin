@@ -33,7 +33,7 @@ class PaketSpesialController extends Controller
         if ($request->hasfile('gambar')) {
             foreach ($request->file('gambar') as $file) {
                 $path = $file->store('public/paket_spesial');
-                $gambarPaths[] = $path;
+                $gambarPaths[] = basename($path); // Simpan hanya nama file
             }
         }
 
@@ -65,7 +65,7 @@ class PaketSpesialController extends Controller
         if ($request->hasfile('gambar')) {
             foreach ($request->file('gambar') as $file) {
                 $path = $file->store('public/paket_spesial');
-                $gambarPaths[] = $path;
+                $gambarPaths[] = basename($path); // Simpan hanya nama file
             }
         }
 

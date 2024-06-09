@@ -17,7 +17,8 @@
                             <input type="file" name="image1"
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
                             @if ($heroSection->image1)
-                                <img src="{{ Storage::url($heroSection->image1) }}" alt="Image 1" class="mt-2 w-32 h-32">
+                                <img src="{{ asset('storage/hero-section/' . $heroSection->image1) }}" alt="Image 1"
+                                    class="mt-2 w-32 h-32">
                             @endif
                         </div>
                         <div class="mt-2">
@@ -25,7 +26,7 @@
                             <input type="file" name="image2"
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
                             @if ($heroSection->image2)
-                                <img src="{{ Storage::url($heroSection->image2) }}" alt="Image 2" class="mt-2 w-32 h-32">
+                                <img src="{{ asset('storage/hero-section/' . $heroSection->image2) }}" alt="Image 2" class="mt-2 w-32 h-32">
                             @endif
                         </div>
                         <div class="mt-2">
@@ -33,7 +34,7 @@
                             <input type="file" name="image3"
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
                             @if ($heroSection->image3)
-                                <img src="{{ Storage::url($heroSection->image3) }}" alt="Image 3" class="mt-2 w-32 h-32">
+                                <img src="{{ asset('storage/hero-section/' . $heroSection->image3) }}" alt="Image 3" class="mt-2 w-32 h-32">
                             @endif
                         </div>
                         <div class="mt-2">
@@ -56,7 +57,7 @@
                             <input type="file" name="video"
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
                             @if ($heroSection->video)
-                                <video src="{{ Storage::url($heroSection->video) }}" class="mt-2 w-32 h-32"
+                                <video src="{{ asset('storage/hero-section/' . $heroSection->video) }}" class="mt-2 w-32 h-32"
                                     controls></video>
                             @endif
                         </div>

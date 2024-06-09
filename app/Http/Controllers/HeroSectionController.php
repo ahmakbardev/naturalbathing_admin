@@ -52,13 +52,13 @@ class HeroSectionController extends Controller
         $videoPath = $request->file('video') ? $request->file('video')->store('public/hero-section') : null;
 
         DB::table('hero_section')->insert([
-            'image1' => $image1Path,
-            'image2' => $image2Path,
-            'image3' => $image3Path,
+            'image1' => basename($image1Path),
+            'image2' => basename($image2Path),
+            'image3' => basename($image3Path),
             'title' => $request->title,
             'span_title' => $request->span_title,
             'subtitle' => $request->subtitle,
-            'video' => $videoPath,
+            'video' => $videoPath ? basename($videoPath) : null,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -78,24 +78,27 @@ class HeroSectionController extends Controller
             'image2' => 'image',
             'image3' => 'image',
             'title' => 'required',
+            'span_title' => 'required',
             'subtitle' => 'required',
         ]);
 
         if ($request->hasFile('image1')) {
-            $heroSection->image1 = $request->file('image1')->store('public/hero-section');
+            $heroSection->image1 = basename($request->file('image1')->store('public/hero-section'));
         }
         if ($request->hasFile('image2')) {
-            $heroSection->image2 = $request->file('image2')->store('public/hero-section');
+            $heroSection->image2 = basename($request->file('image2')->store('public/hero-section'));
         }
         if ($request->hasFile('image3')) {
-            $heroSection->image3 = $request->file('image3')->store('public/hero-section');
+            $heroSection->image3 = basename($request->file('image3')->store('public/hero-section'));
         }
         $heroSection->title = $request->title;
+        $heroSection->span_title = $request->span_title;
         $heroSection->subtitle = $request->subtitle;
         $heroSection->save();
 
         return redirect()->route('admin.dashboard')->with('success', 'Hero Section updated successfully');
     }
+
 
     public function destroy(HeroSection $heroSection)
     {

@@ -35,15 +35,15 @@
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
                             <div class="flex mt-2">
                                 @foreach ($paketBiasa->gambar as $gambar)
-                                    <img src="{{ Storage::url($gambar) }}" alt="Gambar" class="w-32 h-32 mr-2">
+                                    <img src="{{ asset('storage/paket_biasa/' . $gambar) }}" alt="Gambar" class="w-32 h-32 mr-2">
                                 @endforeach
                             </div>
                         </div>
-                        <div class="mt-2">
+                        {{-- <div class="mt-2">
                             <label class="block text-sm font-medium text-gray-700">Review</label>
                             <textarea name="review[]"
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">{{ $paketBiasa->review ? $paketBiasa->review[0] : '' }}</textarea>
-                        </div>
+                        </div> --}}
                         <div class="mt-4 flex justify-end">
                             <button type="submit"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save</button>

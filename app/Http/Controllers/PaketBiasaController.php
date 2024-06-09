@@ -29,17 +29,17 @@ class PaketBiasaController extends Controller
             'review' => 'nullable|array',
         ]);
 
+        // dd('aa');
         $gambarPaths = [];
         if ($request->hasfile('gambar')) {
             foreach ($request->file('gambar') as $file) {
                 $path = $file->store('public/paket_biasa');
-                $gambarPaths[] = $path;
+                $gambarPaths[] = basename($path); // Simpan hanya nama file
             }
         }
 
         $data = $request->all();
         $data['gambar'] = $gambarPaths;
-
         PaketBiasa::create($data);
 
         return redirect()->route('content.paket-biasa.index')->with('success', 'Paket Biasa created successfully.');
@@ -61,11 +61,11 @@ class PaketBiasaController extends Controller
             'review' => 'nullable|array',
         ]);
 
-        $gambarPaths = $paketBiasa->gambar;
+        $gambarPaths = $paketBiasa->gambar ?? [];
         if ($request->hasfile('gambar')) {
             foreach ($request->file('gambar') as $file) {
                 $path = $file->store('public/paket_biasa');
-                $gambarPaths[] = $path;
+                $gambarPaths[] = basename($path); // Simpan hanya nama file
             }
         }
 

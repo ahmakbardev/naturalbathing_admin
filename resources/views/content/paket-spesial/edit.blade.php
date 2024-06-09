@@ -34,7 +34,7 @@
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
                             <div class="flex mt-2">
                                 @foreach($paketSpesial->gambar as $gambar)
-                                    <img src="{{ Storage::url($gambar) }}" alt="Gambar" class="w-16 h-16 mr-2">
+                                    <img src="{{ asset('storage/paket_spesial/' . $gambar) }}" alt="Gambar" class="w-16 h-16 mr-2">
                                 @endforeach
                             </div>
                         </div>

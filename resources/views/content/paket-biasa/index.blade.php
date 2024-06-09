@@ -42,7 +42,7 @@
                                     <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
                                         <div class="flex">
                                             @foreach ($paket->gambar as $gambar)
-                                                <img src="{{ Storage::url($gambar) }}" alt="Gambar"
+                                                <img src="{{ asset('storage/paket_biasa/' . $gambar) }}" alt="Gambar"
                                                     class="w-16 h-16 mr-2">
                                             @endforeach
                                         </div>
