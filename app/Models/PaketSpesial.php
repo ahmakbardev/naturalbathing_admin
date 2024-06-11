@@ -11,7 +11,7 @@ class PaketSpesial extends Model
 
     protected $table = 'paket_spesial';
 
-    protected $fillable = ['nama_paket', 'harga', 'deskripsi', 'gambar', 'review'];
+    protected $fillable = ['nama_paket', 'harga', 'deskripsi', 'short_deskripsi', 'gambar', 'review'];
 
     protected $casts = [
         'gambar' => 'array',

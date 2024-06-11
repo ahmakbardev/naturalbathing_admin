@@ -7,7 +7,7 @@
                 <!-- heading -->
                 <div class="flex justify-between items-center">
                     <div class="border-b border-gray-300 px-5 py-4">
-                        <h4>Daftar Paket Biasa</h4>
+                        <h4>Daftar Paket Spesial</h4>
                     </div>
                     <a href="{{ route('content.paket-spesial.create') }}"
                         class="bg-blue-500 text-white mx-5 px-4 py-2 h-fit rounded">Create Paket

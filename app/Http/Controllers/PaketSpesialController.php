@@ -24,6 +24,7 @@ class PaketSpesialController extends Controller
             'nama_paket' => 'required',
             'harga' => 'required|numeric',
             'deskripsi' => 'required',
+            'short_deskripsi' => 'required',
             'gambar' => 'required|array',
             'gambar.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'review' => 'nullable|array',
@@ -33,7 +34,7 @@ class PaketSpesialController extends Controller
         if ($request->hasfile('gambar')) {
             foreach ($request->file('gambar') as $file) {
                 $path = $file->store('public/paket_spesial');
-                $gambarPaths[] = basename($path); // Simpan hanya nama file
+                $gambarPaths[] = basename($path);
             }
         }
 
@@ -45,17 +46,13 @@ class PaketSpesialController extends Controller
         return redirect()->route('content.paket-spesial.index')->with('success', 'Paket Spesial created successfully.');
     }
 
-    public function edit(PaketSpesial $paketSpesial)
-    {
-        return view('content.paket-spesial.edit', compact('paketSpesial'));
-    }
-
     public function update(Request $request, PaketSpesial $paketSpesial)
     {
         $request->validate([
             'nama_paket' => 'required',
             'harga' => 'required|numeric',
             'deskripsi' => 'required',
+            'short_deskripsi' => 'required',
             'gambar' => 'nullable|array',
             'gambar.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'review' => 'nullable|array',
@@ -65,7 +62,7 @@ class PaketSpesialController extends Controller
         if ($request->hasfile('gambar')) {
             foreach ($request->file('gambar') as $file) {
                 $path = $file->store('public/paket_spesial');
-                $gambarPaths[] = basename($path); // Simpan hanya nama file
+                $gambarPaths[] = basename($path);
             }
         }
 
@@ -76,6 +73,7 @@ class PaketSpesialController extends Controller
 
         return redirect()->route('content.paket-spesial.index')->with('success', 'Paket Spesial updated successfully.');
     }
+
 
     public function destroy(PaketSpesial $paketSpesial)
     {

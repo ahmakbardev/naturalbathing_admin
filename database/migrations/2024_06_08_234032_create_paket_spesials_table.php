@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_paket');
             $table->integer('harga');
+            $table->text('short_deskripsi')->nullable();
             $table->text('deskripsi');
             $table->json('gambar');
             $table->json('review')->nullable();

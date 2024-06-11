@@ -8,7 +8,8 @@
                     <div class="flex justify-between items-center">
                         <h2 class="text-gray-900 font-medium text-xl">Edit Paket Spesial</h2>
                     </div>
-                    <form action="{{ route('content.paket-spesial.update', $paketSpesial->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('content.paket-spesial.update', $paketSpesial->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mt-2">
@@ -19,9 +20,14 @@
                         </div>
                         <div class="mt-2">
                             <label class="block text-sm font-medium text-gray-700">Harga</label>
-                            <input type="text" name="harga"
+                            <input type="number" name="harga"
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
                                 value="{{ $paketSpesial->harga }}">
+                        </div>
+                        <div class="mt-2">
+                            <label class="block text-sm font-medium text-gray-700">Short Deskripsi</label>
+                            <textarea name="short_deskripsi" id="short_deskripsi"
+                                class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">{{ $paketSpesial->short_deskripsi }}</textarea>
                         </div>
                         <div class="mt-2">
                             <label class="block text-sm font-medium text-gray-700">Deskripsi</label>
@@ -33,8 +39,9 @@
                             <input type="file" name="gambar[]" multiple
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
                             <div class="flex mt-2">
-                                @foreach($paketSpesial->gambar as $gambar)
-                                    <img src="{{ asset('storage/paket_spesial/' . $gambar) }}" alt="Gambar" class="w-16 h-16 mr-2">
+                                @foreach ($paketSpesial->gambar as $gambar)
+                                    <img src="{{ asset('storage/paket_spesial/' . $gambar) }}" alt="Gambar"
+                                        class="w-16 h-16 mr-2">
                                 @endforeach
                             </div>
                         </div>
@@ -49,6 +56,7 @@
     </div>
 
     <script>
+        CKEDITOR.replace('short_deskripsi');
         CKEDITOR.replace('deskripsi');
     </script>
 @endsection

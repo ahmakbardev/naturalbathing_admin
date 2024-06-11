@@ -18,9 +18,14 @@
                         </div>
                         <div class="mt-2">
                             <label class="block text-sm font-medium text-gray-700">Harga</label>
-                            <input type="text" name="harga"
+                            <input type="number" name="harga"
                                 class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
                                 value="{{ old('harga') }}">
+                        </div>
+                        <div class="mt-2">
+                            <label class="block text-sm font-medium text-gray-700">Short Deskripsi</label>
+                            <textarea name="short_deskripsi" id="short_deskripsi"
+                                class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">{{ old('short_deskripsi') }}</textarea>
                         </div>
                         <div class="mt-2">
                             <label class="block text-sm font-medium text-gray-700">Deskripsi</label>
@@ -42,7 +47,9 @@
         </div>
     </div>
 
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('deskripsi');
+        CKEDITOR.replace('short_deskripsi');
     </script>
 @endsection
