@@ -124,7 +124,7 @@
                                         <img class="w-16 h-16 object-cover rounded cursor-pointer"
                                             src="{{ asset('storage/bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}"
                                             alt="Bukti Pembayaran"
-                                            onclick="showModal('{{ asset('bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}')">
+                                            onclick="showModal('{{ asset('storage/bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}')">
                                     </td>
                                     <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
                                         <form action="{{ route('pembayaran.updateStatus', $pembayaran->id) }}"
