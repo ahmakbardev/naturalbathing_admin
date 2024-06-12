@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HeroSectionController;
 use App\Http\Controllers\MapSectionController;
 use App\Http\Controllers\PaketBiasaController;
@@ -34,9 +35,8 @@ Route::middleware('guest:admin')->group(function () {
 Route::middleware('auth:admin')->group(function () {
     // Route::prefix('admin')->group(function () {
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-    Route::get('/', function () {
-        return view('index');
-    })->name('admin.dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::put('/pembayaran/{id}/status', [DashboardController::class, 'updateStatus'])->name('pembayaran.updateStatus');
     // });
     Route::prefix('content')->name('content.')->group(function () {
         Route::get('/hero-section/check', [HeroSectionController::class, 'checkAndRedirect'])->name('hero-section.check');

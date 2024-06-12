@@ -100,8 +100,7 @@
                     <table class="text-left w-full whitespace-nowrap">
                         <thead class="text-gray-700">
                             <tr>
-                                <th scope="col" class="border-b bg-gray-100 px-6 py-3">Nama User
-                                </th>
+                                <th scope="col" class="border-b bg-gray-100 px-6 py-3">Nama User</th>
                                 <th scope="col" class="border-b bg-gray-100 px-6 py-3">Paket</th>
                                 <th scope="col" class="border-b bg-gray-100 px-6 py-3">Pembayaran</th>
                                 <th scope="col" class="border-b bg-gray-100 px-6 py-3">Status</th>
@@ -109,45 +108,71 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
-                                    <div class="flex items-center">
-                                        <img src="./assets/images/svg/brand-logo-1.svg" alt="" class="h-6 w-6" />
-
-                                        <h5 class="mb-1 ml-4"><a href="#!">Dropbox Design System</a>
-                                        </h5>
-                                    </div>
-                                </td>
-                                <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">34
-                                </td>
-                                <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
-                                    <div class="-space-x-5">
-                                        <img class="relative inline-block object-cover w-8 h-8 rounded-full border-white border-2"
-                                            src="./assets/images/avatar/avatar-1.jpg" alt="Profile image" />
-                                        <img class="relative inline-block object-cover w-8 h-8 rounded-full border-white border-2"
-                                            src="./assets/images/avatar/avatar-2.jpg" alt="Profile image" />
-                                        <img class="relative inline-block object-cover w-8 h-8 border-2 rounded-full border-white"
-                                            src="./assets/images/avatar/avatar-1.jpg" alt="Profile image" />
-                                        <div
-                                            class="relative w-8 h-8 bg-indigo-600 rounded-full inline-flex items-center justify-center text-white text-sm border-2 border-white">
-                                            2+</div>
-                                    </div>
-                                </td>
-                                <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
-                                    <span
-                                        class="bg-yellow-200 px-2 py-1 text-yellow-700 text-sm font-medium rounded-full inline-block whitespace-nowrap text-center">Medium</span>
-                                </td>
-                                <td class="border-b border-gray-300 py-3 px-6 pe-6 text-left">
-                                    <div class="flex items-center gap-2">
-                                        <div>15%</div>
-                                        <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                            <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 15%"></div>
+                            @foreach ($pembayarans as $pembayaran)
+                                <tr>
+                                    <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
+                                        <div class="flex items-center">
+                                            <h5 class="mb-1 ml-4"><a href="#">{{ $pembayaran->user_name }}</a></h5>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
+                                        @foreach (json_decode($pembayaran->paket_data, true)['items'] as $item)
+                                            <div>{{ $item['name'] }} ({{ $item['quantity'] }})</div>
+                                        @endforeach
+                                    </td>
+                                    <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
+                                        <img class="w-16 h-16 object-cover rounded cursor-pointer"
+                                            src="{{ asset('bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}"
+                                            alt="Bukti Pembayaran"
+                                            onclick="showModal('{{ asset('bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}')">
+                                    </td>
+                                    <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
+                                        <form action="{{ route('pembayaran.updateStatus', $pembayaran->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="status" onchange="this.form.submit()" class="form-select">
+                                                <option value="0" {{ $pembayaran->status == 0 ? 'selected' : '' }}>
+                                                    Belum Terverifikasi</option>
+                                                <option value="1" {{ $pembayaran->status == 1 ? 'selected' : '' }}>
+                                                    Terverifikasi</option>
+                                            </select>
+                                        </form>
+                                    </td>
+                                    <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
+                                        @if ($pembayaran->status)
+                                            <span class="text-green-500">Lunas</span>
+                                        @else
+                                            <span class="text-red-500">Belum Lunas</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                    <!-- Modal -->
+                    <div id="modal"
+                        class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 hidden">
+                        <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg relative">
+                            <button onclick="hideModal()"
+                                class="absolute top-0 right-0 mt-2 mr-2 text-red-500 font-bold">Close</button>
+                            <img id="modal-image" class="w-full h-auto object-cover rounded">
+                        </div>
+                    </div>
+
+                    <script>
+                        function showModal(imageUrl) {
+                            const modal = document.getElementById('modal');
+                            const modalImage = document.getElementById('modal-image');
+                            modalImage.src = imageUrl;
+                            modal.classList.remove('hidden');
+                        }
+
+                        function hideModal() {
+                            const modal = document.getElementById('modal');
+                            modal.classList.add('hidden');
+                        }
+                    </script>
                 </div>
             </div>
         </div>
