@@ -122,7 +122,7 @@
                                     </td>
                                     <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
                                         <img class="w-16 h-16 object-cover rounded cursor-pointer"
-                                            src="{{ asset('bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}"
+                                            src="{{ asset('storage/bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}"
                                             alt="Bukti Pembayaran"
                                             onclick="showModal('{{ asset('bukti_pembayaran/' . $pembayaran->ss_pembayaran) }}')">
                                     </td>
@@ -150,32 +150,31 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <!-- Modal -->
-                    <div id="modal"
-                        class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 hidden">
-                        <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg relative">
-                            <button onclick="hideModal()"
-                                class="absolute top-0 right-0 mt-2 mr-2 text-red-500 font-bold">Close</button>
-                            <img id="modal-image" class="w-full h-auto object-cover rounded">
-                        </div>
-                    </div>
 
-                    <script>
-                        function showModal(imageUrl) {
-                            const modal = document.getElementById('modal');
-                            const modalImage = document.getElementById('modal-image');
-                            modalImage.src = imageUrl;
-                            modal.classList.remove('hidden');
-                        }
-
-                        function hideModal() {
-                            const modal = document.getElementById('modal');
-                            modal.classList.add('hidden');
-                        }
-                    </script>
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div id="modal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg relative">
+                <button onclick="hideModal()" class="absolute top-0 right-0 mt-2 mr-2 text-red-500 font-bold">Close</button>
+                <img id="modal-image" class="w-full h-auto object-cover rounded">
+            </div>
+        </div>
+
+        <script>
+            function showModal(imageUrl) {
+                const modal = document.getElementById('modal');
+                const modalImage = document.getElementById('modal-image');
+                modalImage.src = imageUrl;
+                modal.classList.remove('hidden');
+            }
+
+            function hideModal() {
+                const modal = document.getElementById('modal');
+                modal.classList.add('hidden');
+            }
+        </script>
         <!-- card -->
         <div class="card h-full shadow">
             <div class="border-b border-gray-300 px-5 py-4 flex justify-between items-center">
