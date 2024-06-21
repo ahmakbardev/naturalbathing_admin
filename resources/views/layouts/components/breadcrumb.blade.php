@@ -121,9 +121,19 @@
 
     <!-- title -->
     @if (Route::currentRouteName() == 'admin.dashboard')
-        <a href="#"
-            class="btn bg-white text-gray-800 border-gray-600 hover:bg-gray-100 hover:text-gray-800 hover:border-gray-200 active:bg-gray-100 active:text-gray-800 active:border-gray-200 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-            Buat Paket Baru
-        </a>
+        <div class="relative dropdown inline-block text-left">
+            <button
+                class="btn bg-white text-gray-800 border-gray-600 hover:bg-gray-100 hover:text-gray-800 hover:border-gray-200 active:bg-gray-100 active:text-gray-800 active:border-gray-200 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+                type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Buat Paket Baru
+            </button>
+            {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> --}}
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('content.paket-biasa.index') }}">Paket Biasa</a></li>
+                    <li><a class="dropdown-item" href="{{ route('content.paket-spesial.index') }}">Paket Spesial</a></li>
+                    {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                </ul>
+            {{-- </div> --}}
+        </div>
     @endif
 </div>

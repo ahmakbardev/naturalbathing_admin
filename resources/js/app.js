@@ -49,40 +49,40 @@ import "./bootstrap";
         });
     }
 
-    // Performance Chart
-    var perfomanceChart = document.getElementById("perfomanceChart");
+    // // Performance Chart
+    // var perfomanceChart = document.getElementById("perfomanceChart");
 
-    if (perfomanceChart) {
-        var options = {
-            series: [100, 78, 89],
-            chart: {
-                height: 320,
-                type: "radialBar",
-            },
-            colors: ["#28a745", "#ffc107", "#dc3545"],
-            stroke: {
-                lineCap: "round",
-            },
-            plotOptions: {
-                radialBar: {
-                    startAngle: -168,
-                    endAngle: -450,
-                    hollow: {
-                        size: "55%",
-                    },
-                    track: {
-                        background: "transparent",
-                    },
-                    dataLabels: {
-                        show: false,
-                    },
-                },
-            },
-        };
+    // if (perfomanceChart) {
+    //     var options = {
+    //         series: [100, 78, 89],
+    //         chart: {
+    //             height: 320,
+    //             type: "radialBar",
+    //         },
+    //         colors: ["#28a745", "#ffc107", "#dc3545"],
+    //         stroke: {
+    //             lineCap: "round",
+    //         },
+    //         plotOptions: {
+    //             radialBar: {
+    //                 startAngle: -168,
+    //                 endAngle: -450,
+    //                 hollow: {
+    //                     size: "55%",
+    //                 },
+    //                 track: {
+    //                     background: "transparent",
+    //                 },
+    //                 dataLabels: {
+    //                     show: false,
+    //                 },
+    //             },
+    //         },
+    //     };
 
-        var chart = new ApexCharts(perfomanceChart, options);
-        chart.render();
-    }
+    //     var chart = new ApexCharts(perfomanceChart, options);
+    //     chart.render();
+    // }
 
     // Offcanvas
     var offcanvasElements = document.querySelectorAll(".offcanvas");

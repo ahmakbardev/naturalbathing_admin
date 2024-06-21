@@ -49,14 +49,14 @@
                             <a class="nav-link {{ in_array(Route::currentRouteName(), ['content.paket-spesial.index', 'content.paket-spesial.create', 'content.paket-spesial.edit']) ? 'underline underline-offset-4' : '' }}"
                                 href="{{ route('content.paket-spesial.index') }}">Paket Spesial</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link " href="./404-error.html">Galeri Foto</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </li>
             <!-- nav item -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link  collapsed " href="#!" data-bs-toggle="collapse"
                     data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
                     <i data-feather="lock" class="w-4 h-4 mr-2"></i>
@@ -75,7 +75,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
             {{-- <!-- nav item -->
             <li class="nav-item">
                 <a class="nav-link " href="./layout.html">
