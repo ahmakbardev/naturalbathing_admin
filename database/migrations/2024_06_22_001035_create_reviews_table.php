@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('paket_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('paket_type');
             $table->text('review');
             $table->timestamps();
 
-            $table->foreign('paket_id')->references('id')->on('paket_biasa')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // Note: Foreign key for paket_id is not defined as it can refer to multiple tables.
         });
     }
 
