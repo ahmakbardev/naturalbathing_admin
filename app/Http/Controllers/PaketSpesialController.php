@@ -48,7 +48,7 @@ class PaketSpesialController extends Controller
 
     public function edit(PaketSpesial $paketSpesial)
     {
-        return view('content.paket-spesial.edit', compact('paketBiasa'));
+        return view('content.paket-spesial.edit', compact('paketSpesial'));
     }
 
     public function update(Request $request, PaketSpesial $paketSpesial)
