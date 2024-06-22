@@ -46,6 +46,11 @@ class PaketSpesialController extends Controller
         return redirect()->route('content.paket-spesial.index')->with('success', 'Paket Spesial created successfully.');
     }
 
+    public function edit(PaketSpesial $paketSpesial)
+    {
+        return view('content.paket-spesial.edit', compact('paketBiasa'));
+    }
+
     public function update(Request $request, PaketSpesial $paketSpesial)
     {
         $request->validate([
