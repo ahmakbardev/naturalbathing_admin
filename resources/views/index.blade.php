@@ -248,12 +248,12 @@
                                 <tr>
                                     <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
                                         <div class="flex items-center">
-                                            <div>
+                                            {{-- <div>
                                                 <a href="#!" class="h-10 w-10 inline-block">
                                                     <img src="{{ asset('assets/images/avatar/default-avatar.png') }}"
                                                         alt="Image" class="rounded-full" />
                                                 </a>
-                                            </div>
+                                            </div> --}}
                                             <div class="ml-3 leading-4">
                                                 <h5 class="mb-1"><a href="#!">{{ $user->name }}</a></h5>
                                                 <p class="mb-0 text-gray-500">{{ $user->email }}</p>
