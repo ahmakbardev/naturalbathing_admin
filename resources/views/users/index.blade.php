@@ -26,7 +26,7 @@
                                     <td class="py-3 px-6 text-left">{{ $user->name }}</td>
                                     <td class="py-3 px-6 text-left">{{ $user->email }}</td>
                                     <td class="py-3 px-6 text-left">
-                                        @if ($user->email_verified_at)
+                                        @if ($user->created_at)
                                             <span
                                                 class="bg-green-200 px-2 py-1 text-green-700 text-sm font-medium rounded-full inline-block">Verified</span>
                                         @else

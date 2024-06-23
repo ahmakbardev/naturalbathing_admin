@@ -117,6 +117,40 @@
                 </li>
             @endif
         @endif
+        @if (in_array($currentRouteName, ['users.index']))
+            <li class="inline-flex items-center">
+                <p
+                    class="flex items-center text-black transition-all ease-in-out focus:outline-none focus:text-indigo-600">
+                    User</p>
+            </li>
+        @endif
+        @if (in_array($currentRouteName, ['users.edit', 'users.create']))
+            <li class="inline-flex items-center">
+                <a class="flex items-center hover:text-black transition-all ease-in-out focus:outline-none focus:text-indigo-600"
+                    href="{{ route('users.index') }}">User</a>
+                @if ($currentRouteName != 'users.index')
+                    <svg class="flex-shrink-0 mx-2 overflow-visible h-4 w-4 text-gray-400"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                @endif
+            </li>
+            @if (in_array($currentRouteName, ['users.create']))
+                <li class="inline-flex items-center">
+                    <p
+                        class="flex items-center text-black transition-all ease-in-out focus:outline-none focus:text-indigo-600">
+                        Create</p>
+                </li>
+            @elseif (in_array($currentRouteName, ['users.edit']))
+                <li class="inline-flex items-center">
+                    <p
+                        class="flex items-center text-black transition-all ease-in-out focus:outline-none focus:text-indigo-600">
+                        Edit</p>
+                </li>
+            @endif
+        @endif
     </ol>
 
     <!-- title -->
@@ -128,11 +162,11 @@
                 Buat Paket Baru
             </button>
             {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> --}}
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('content.paket-biasa.index') }}">Paket Biasa</a></li>
-                    <li><a class="dropdown-item" href="{{ route('content.paket-spesial.index') }}">Paket Spesial</a></li>
-                    {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
-                </ul>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('content.paket-biasa.index') }}">Paket Biasa</a></li>
+                <li><a class="dropdown-item" href="{{ route('content.paket-spesial.index') }}">Paket Spesial</a></li>
+                {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+            </ul>
             {{-- </div> --}}
         </div>
     @endif
