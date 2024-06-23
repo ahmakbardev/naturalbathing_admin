@@ -99,7 +99,7 @@
                 <div class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="dropdownUser">
                     <div class="px-4 pb-0 pt-2">
                         <div class="leading-4">
-                            <h5 class="mb-1">Admin</h5>
+                            <h5 class="mb-1">{{ Auth::user()->name }}</h5>
                             <a href="#">Natural Bathing PAB</a>
                         </div>
                         <div class="border-b mt-3 mb-2"></div>
