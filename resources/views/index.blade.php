@@ -181,7 +181,7 @@
                 <h4>Statistik Pesanan</h4>
                 <!-- dropdown -->
                 <div class="dropdown leading-4">
-                    <button class="text-gray-600 p-2 hover:bg-gray-300 rounded-full transition-all" type="button"
+                    {{-- <button class="text-gray-600 p-2 hover:bg-gray-300 rounded-full transition-all" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i data-feather="more-vertical" class="w-4 h-4"></i>
                     </button>
@@ -189,7 +189,7 @@
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
             <!-- card body -->
