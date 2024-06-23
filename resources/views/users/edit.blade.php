@@ -5,7 +5,7 @@
         <div class="xl:col-span-2">
             <div class="card h-full shadow p-4">
                 <h4 class="text-2xl mb-4">Edit User</h4>
-                <form action="{{ route('users.update', $user ? $user->id : $admin->id) }}" method="POST">
+                <form action="{{ route('users.update', $user ? $user->id : $admin->id) }}" method="POST" id="editUserForm">
                     @csrf
                     @method('PUT')
                     <div class="grid lg:grid-cols-2 gap-5">
@@ -37,9 +37,51 @@
                             <option value="admin" {{ $role == 'admin' ? 'selected' : '' }}>Admin</option>
                         </select>
                     </div>
-                    <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-lg">Update User</button>
+                    <button type="submit" id="submitButton"
+                        class="hidden bg-indigo-500 text-white px-4 py-2 rounded-lg">Update User</button>
+                    <button type="button" id="cancelButton" class="bg-red-500 text-white px-4 py-2 rounded-lg"
+                        onclick="window.location.href='{{ route('users.index') }}'">Batal</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('editUserForm');
+            const submitButton = document.getElementById('submitButton');
+            const cancelButton = document.getElementById('cancelButton');
+
+            const initialFormState = getFormState(form);
+
+            form.addEventListener('input', function() {
+                const currentFormState = getFormState(form);
+                if (isFormChanged(initialFormState, currentFormState)) {
+                    submitButton.classList.remove('hidden');
+                    cancelButton.classList.add('hidden');
+                } else {
+                    submitButton.classList.add('hidden');
+                    cancelButton.classList.remove('hidden');
+                }
+            });
+
+            function getFormState(form) {
+                const formData = new FormData(form);
+                let state = {};
+                formData.forEach((value, key) => {
+                    state[key] = value;
+                });
+                return state;
+            }
+
+            function isFormChanged(initialState, currentState) {
+                for (let key in initialState) {
+                    if (initialState[key] !== currentState[key]) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+    </script>
 @endsection
