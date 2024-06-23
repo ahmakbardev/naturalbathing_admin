@@ -267,7 +267,7 @@
                                         {{ $user->created_at }}</td>
                                     <td class="border-b border-gray-300 font-medium py-3 px-6 text-left">
                                         <div class="dropdown leading-4">
-                                            <button class="text-gray-600 p-2 hover:bg-gray-300 rounded-full transition-all"
+                                            {{-- <button class="text-gray-600 p-2 hover:bg-gray-300 rounded-full transition-all"
                                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i data-feather="more-vertical" class="w-4 h-4"></i>
                                             </button>
@@ -276,7 +276,7 @@
                                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                                 <li><a class="dropdown-item" href="#">Something else here</a>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                         </div>
                                     </td>
                                 </tr>
