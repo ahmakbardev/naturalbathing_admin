@@ -6,6 +6,7 @@ use App\Http\Controllers\HeroSectionController;
 use App\Http\Controllers\MapSectionController;
 use App\Http\Controllers\PaketBiasaController;
 use App\Http\Controllers\PaketSpesialController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,5 +49,12 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('paket-biasa', PaketBiasaController::class);
 
         Route::resource('paket-spesial', PaketSpesialController::class);
+    });
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/create', [UserController::class, 'create'])->name('create');
+        Route::post('/users', [UserController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [UserController::class, 'update'])->name('update');
     });
 });

@@ -55,6 +55,16 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item">
+                <div class="navbar-heading">Manajemen User</div>
+            </li>
+            <!-- nav item -->
+            <li class="nav-item">
+                <a class="nav-link " href="{{ route('users.index') }}">
+                    <i data-feather="user" class="w-4 h-4 mr-2"></i>
+                    User List
+                </a>
+            </li>
             <!-- nav item -->
             {{-- <li class="nav-item">
                 <a class="nav-link  collapsed " href="#!" data-bs-toggle="collapse"
@@ -75,13 +85,6 @@
                         </li>
                     </ul>
                 </div>
-            </li> --}}
-            {{-- <!-- nav item -->
-            <li class="nav-item">
-                <a class="nav-link " href="./layout.html">
-                    <i data-feather="sidebar" class="w-4 h-4 mr-2"></i>
-                    Layouts
-                </a>
             </li> --}}
         </ul>
     </div>
