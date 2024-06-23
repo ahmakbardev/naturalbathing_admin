@@ -56,5 +56,6 @@ Route::middleware('auth:admin')->group(function () {
         Route::post('/users', [UserController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
         Route::put('/{id}', [UserController::class, 'update'])->name('update');
+        Route::put('/{id}/role', [UserController::class, 'updateRole'])->name('updateRole');
     });
 });

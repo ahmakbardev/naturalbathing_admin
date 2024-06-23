@@ -35,6 +35,15 @@
                                 required>
                         </div>
                     </div>
+                    <div class="mb-4">
+                        <label for="role" class="block text-gray-700">Role</label>
+                        <select name="role" id="role"
+                            class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
+                            required>
+                            <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                        </select>
+                    </div>
                     <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-lg">Create User</button>
                 </form>
             </div>

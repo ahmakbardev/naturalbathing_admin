@@ -5,7 +5,7 @@
         <div class="xl:col-span-2">
             <div class="card h-full shadow">
                 <div class="flex justify-between items-center p-4">
-                    <h4>Users</h4>
+                    <h4>Users and Admins</h4>
                     <a href="{{ route('users.create') }}" class="btn bg-indigo-500 text-white">Create User</a>
                 </div>
                 <div class="relative overflow-x-auto">
@@ -15,7 +15,7 @@
                                 <th class="px-6 py-3">#</th>
                                 <th class="px-6 py-3">Name</th>
                                 <th class="px-6 py-3">Email</th>
-                                <th class="px-6 py-3">Status</th>
+                                <th class="px-6 py-3">Role</th>
                                 <th class="px-6 py-3">Actions</th>
                             </tr>
                         </thead>
@@ -26,17 +26,41 @@
                                     <td class="py-3 px-6 text-left">{{ $user->name }}</td>
                                     <td class="py-3 px-6 text-left">{{ $user->email }}</td>
                                     <td class="py-3 px-6 text-left">
-                                        @if ($user->created_at)
-                                            <span
-                                                class="bg-green-200 px-2 py-1 text-green-700 text-sm font-medium rounded-full inline-block">Verified</span>
-                                        @else
-                                            <span
-                                                class="bg-red-200 px-2 py-1 text-red-700 text-sm font-medium rounded-full inline-block">Not
-                                                Verified</span>
-                                        @endif
+                                        <form action="{{ route('users.updateRole', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="role" onchange="this.form.submit()"
+                                                class="px-2 py-1 text-sm font-medium rounded-full inline-block {{ $user->email_verified_at ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700' }}">
+                                                <option value="user" {{ $user->email_verified_at ? 'selected' : '' }}>User
+                                                </option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </form>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <a href="{{ route('users.edit', $user->id) }}"
+                                            class="text-blue-500 hover:text-blue-700">Edit</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @foreach ($admins as $admin)
+                                <tr class="border-gray-300 border-b bg-gray-100">
+                                    <td class="py-3 px-6 text-left">{{ $loop->iteration + $users->count() }}</td>
+                                    <td class="py-3 px-6 text-left">{{ $admin->name }}</td>
+                                    <td class="py-3 px-6 text-left">{{ $admin->email }}</td>
+                                    <td class="py-3 px-6 text-left">
+                                        <form action="{{ route('users.updateRole', $admin->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="role" onchange="this.form.submit()"
+                                                class="px-2 py-1 text-sm font-medium rounded-full inline-block bg-green-200 text-green-700">
+                                                <option value="user">User</option>
+                                                <option value="admin" selected>Admin</option>
+                                            </select>
+                                        </form>
+                                    </td>
+                                    <td class="py-3 px-6 text-left">
+                                        <a href="{{ route('users.edit', $admin->id) }}"
                                             class="text-blue-500 hover:text-blue-700">Edit</a>
                                     </td>
                                 </tr>
